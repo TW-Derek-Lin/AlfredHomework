@@ -15,3 +15,4 @@
 
 * person 分類的 confidence 設定要大於 0.9 是因為測試影片中有些畫面雖然不是人像，卻被 ObjectDetection 認定為 person，可能導致錯誤的錄影觸發時機，此為物件特徵辨識的問題，但為了 Demo 方便，這邊濾掉 confidence 低於 0.9 的判斷，讓 Demo 功能的呈現更明顯 (實際使用 confidence 可能需要經過多次實驗調整)。 
 * 無辨識到 person 後五秒關閉寫入，目前測試影片可能不明顯(跟10秒關檔條件容易重疊)，因此如果要方便測試更明顯無偵測到 person 後關檔的功能，可修改 debounceTimeConstant 數值 (2 or 3) ，便不會與10秒關檔條件重疊。
+* 繪製 bounding boxes 的部分用 GPUImage 處理會比較有效率，但目前直接對 Image 繪製後再轉換，是因為不用第三方 library 的考量。
